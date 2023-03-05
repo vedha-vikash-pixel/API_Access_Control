@@ -1,5 +1,6 @@
 package com.vikash.API_Access_Control.Config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +17,7 @@ import com.vikash.API_Access_Control.Repository.UserRepository;
 @Configuration
 public class ApplicationConfig {
 	
+	@Autowired
 	private UserRepository userRepository;
 
 	@Bean

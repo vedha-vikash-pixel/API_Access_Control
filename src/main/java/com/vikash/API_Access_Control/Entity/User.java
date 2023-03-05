@@ -57,14 +57,12 @@ public class User implements UserDetails{
     
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
 		return List.of(new SimpleGrantedAuthority(role.name()));
 	}
 
 	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isAccountNonExpired() { 
+		return true;
 	}
 
 	@Override
