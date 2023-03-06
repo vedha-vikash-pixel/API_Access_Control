@@ -1,9 +1,14 @@
 package com.vikash.API_Access_Control.Controller;
 
+import java.util.Collection;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +30,8 @@ public class PublicController {    // Controller with public endpoints
 	private AuthenticateService authenticationService; 
 	
 	@GetMapping							//public endpoint
-	public ResponseEntity<String> publicAPI() {		
-		logger.info("Accessed publicAPI() endpoint");
+	public ResponseEntity<String> publicAPI() {				
+		logger.info("Accessed publicAPI endpoint");		
 		return ResponseEntity.ok("Public page which doesn't require authentication");
 	}
 	
