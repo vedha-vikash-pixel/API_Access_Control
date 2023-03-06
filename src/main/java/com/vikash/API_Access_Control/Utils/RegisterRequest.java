@@ -11,10 +11,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {   //class modal for register requests with properties
+public class RegisterRequest { // class modal for register requests with properties
 
-  private String userName;    
-  private String password;
-  @Enumerated(EnumType.STRING)
+	
+	private String userName;
+
+
+	private String password;
+
+
+	@Enumerated(EnumType.STRING)
 	private Role role;
 }
