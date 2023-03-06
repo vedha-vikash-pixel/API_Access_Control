@@ -1,5 +1,7 @@
 package com.vikash.API_Access_Control.Controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,23 +17,28 @@ import com.vikash.API_Access_Control.Utils.RegisterRequest;
 
 @RestController
 @RequestMapping("/myapp/public")
-public class PublicController {
+public class PublicController {    // Controller with public endpoints
+	
+	private static final Logger logger = LoggerFactory.getLogger(PublicController.class);
 	
 	@Autowired
 	private AuthenticateService authenticationService; 
 	
-	@GetMapping
-	public ResponseEntity<String> publicAPI() {
-		return ResponseEntity.ok("Hello from a public page");
+	@GetMapping							//public endpoint
+	public ResponseEntity<String> publicAPI() {		
+		logger.info("Accessed publicAPI() endpoint");
+		return ResponseEntity.ok("Public page which doesn't require authentication");
 	}
 	
-	@PostMapping("/register")
+	@PostMapping("/auth/register")         //register endpoint
 	public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
+		logger.info("Received registration request for user {}", request.getUserName());
 		return ResponseEntity.ok(authenticationService.register(request));
 	}
 
-	@PostMapping("/authenticate")
-	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {		
+	@PostMapping("/auth/login")           //login endpoint
+	public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
+		logger.info("Received registration request for user {}", request.getUserName());
 		return ResponseEntity.ok(authenticationService.authenticate(request));
 	}
 	

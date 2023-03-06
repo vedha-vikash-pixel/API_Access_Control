@@ -13,18 +13,10 @@ import com.vikash.API_Access_Control.Repository.UserRepository;
 import jakarta.annotation.PreDestroy;
 
 @SpringBootApplication
-public class ApiAccessControlApplication implements CommandLineRunner{
-
-	@Autowired
-    private UserRepository userRepository;    
-    
+public class ApiAccessControlApplication{
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ApiAccessControlApplication.class, args);
 	}
-
-	@Override
-    public void run(String... args) throws Exception {
-		        
-    } 
 
 }

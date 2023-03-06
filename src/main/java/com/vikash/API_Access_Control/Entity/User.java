@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails{
+public class User implements UserDetails{    //User Entity class for User Operations 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

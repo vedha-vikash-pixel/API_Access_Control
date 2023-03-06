@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class AuthenticationRequest {
+public class AuthenticationRequest {   //class modal for authentication requests with properties
 
 	private String userName;
 	private String password;

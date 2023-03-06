@@ -7,11 +7,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/myapp/private")
-public class PrivateController {
+public class PrivateController {        // Controller with private endpoints
 
 	@GetMapping
-	public ResponseEntity<String> publicAPI() {
-		return ResponseEntity.ok("Hello from a private page");
+	public ResponseEntity<String> privateAPI() {		
+		return ResponseEntity.ok("Private page which requires authentication");
+	}
+	
+	@GetMapping("/admin")
+	public ResponseEntity<String> privateAdminAPI() {		
+		return ResponseEntity.ok("Private page which can be accessed only by Admin");
+	}
+	
+	@GetMapping("/user")
+	public ResponseEntity<String> privateUserAPI() {		
+		return ResponseEntity.ok("Private page which can be accessed by Admin and user");
 	}
 	
 }
