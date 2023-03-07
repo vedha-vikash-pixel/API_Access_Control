@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +19,12 @@ import com.vikash.API_Access_Control.Utils.AuthenticationRequest;
 import com.vikash.API_Access_Control.Utils.AuthenticationResponse;
 import com.vikash.API_Access_Control.Utils.RegisterRequest;
 
+import jakarta.validation.Valid;
+
+
 @RestController
 @RequestMapping("/myapp/public")
-		
+@Validated
 public class PublicController {    // Controller with public endpoints
 	
 	private static final Logger logger = LoggerFactory.getLogger(PublicController.class);
@@ -35,7 +39,7 @@ public class PublicController {    // Controller with public endpoints
 	}
 	
 	@PostMapping("/auth/register")         //register endpoint
-	public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+	public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
 		logger.info("Received registration request for user {}", request.getUserName());
 		try {
 			AuthenticationResponse response = authenticationService.register(request);
@@ -47,7 +51,7 @@ public class PublicController {    // Controller with public endpoints
 	}
 
 	@PostMapping("/auth/login")           //login endpoint
-	public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) {
+	public ResponseEntity<?> authenticate(@Valid @RequestBody AuthenticationRequest request) {
 		logger.info("Received registration request for user {}", request.getUserName());
 		try {
 			AuthenticationResponse response = authenticationService.authenticate(request);

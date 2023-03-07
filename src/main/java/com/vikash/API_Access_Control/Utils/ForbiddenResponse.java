@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AuthenticationExceptionResponse {     //class modal for authentication response with properties
+public class ForbiddenResponse {     //class modal for authentication response with properties
 
-	private String Error_Message;
+	private String Forbidden_Message;
 }

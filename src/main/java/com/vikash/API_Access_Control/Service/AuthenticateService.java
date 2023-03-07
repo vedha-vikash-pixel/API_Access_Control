@@ -56,7 +56,7 @@ public class AuthenticateService {
 			logger.info("User authenticated: {}", user.getUsername());
 			return AuthenticationResponse.builder().token(jwtToken).build();
 		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.CONFLICT, "Username not registered", e);
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "Username Password Mismatch", e);
 		}
 	}
 
